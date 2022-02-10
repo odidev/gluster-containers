@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:33
 
 MAINTAINER Humble Devassy Chirammal  <hchiramm@redhat.com>
 
@@ -15,7 +15,7 @@ LABEL architecture="x86_64" \
 ENV container docker
 
 RUN sed -i "s/LANG/\#LANG/g" /etc/locale.conf
-RUN dnf --setopt=tsflags=nodocs -y update &&\
+RUN dnf -y update &&\
 dnf --setopt=tsflags=nodocs -y install wget nfs-utils attr iputils iproute &&\
 dnf install -y glusterfs-fuse &&\
 dnf clean all
